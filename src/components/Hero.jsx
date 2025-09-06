@@ -1,35 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ArrowRight, Play } from 'lucide-react'
 
 const Hero = () => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [isDemoLoading, setIsDemoLoading] = useState(false)
+
+  const handleGetStarted = async () => {
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+      console.log('Navigating to get started...')
+    }, 1000)
+  }
+
+  const handleWatchDemo = async () => {
+    setIsDemoLoading(true)
+    setTimeout(() => {
+      setIsDemoLoading(false)
+      console.log('Opening demo video...')
+    }, 800)
+  }
   return (
-    <section className="px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+    <section className="px-4 py-12 sm:px-6 lg:px-8 lg:py-20" aria-label="Hero section">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/80 text-sm mb-6">
-              <span className="mr-2">🎨</span>
-              Launch offer: experience the new AI experience
+              <span className="mr-2">✨</span>
+              New: AI-powered style recommendations now available
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-              StyleSphere AI
+              Transform Your Style with
+              <span className="block bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                AI-Powered Fashion
+              </span>
             </h1>
             
             <p className="text-xl sm:text-2xl text-white/80 mb-8 max-w-2xl">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+              Discover your unique aesthetic with personalized style recommendations, connect with fashion enthusiasts, and elevate your wardrobe with our intelligent styling assistant.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="flex items-center justify-center px-8 py-4 bg-white text-purple-600 rounded-full font-semibold hover:bg-white/90 transition-colors">
-                Get Started
-                <ArrowRight className="ml-2 w-5 h-5" />
+              <button 
+                onClick={handleGetStarted}
+                disabled={isLoading}
+                className="flex items-center justify-center px-8 py-4 bg-white text-purple-600 rounded-full font-semibold hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
+                aria-label="Get started with StyleSphere AI"
+              >
+                {isLoading ? 'Loading...' : 'Get Started'}
+                {!isLoading && <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />}
               </button>
               
-              <button className="flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full font-semibold hover:bg-white/20 transition-colors">
-                <Play className="mr-2 w-5 h-5" />
-                Watch Demo
+              <button 
+                onClick={handleWatchDemo}
+                disabled={isDemoLoading}
+                className="flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full font-semibold hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
+                aria-label="Watch StyleSphere AI demo video"
+              >
+                {!isDemoLoading && <Play className="mr-2 w-5 h-5" aria-hidden="true" />}
+                {isDemoLoading ? 'Loading...' : 'Watch Demo'}
               </button>
             </div>
           </div>
