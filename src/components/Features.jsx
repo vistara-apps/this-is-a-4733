@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Wand2, Users, Palette, Zap } from 'lucide-react'
 
-const Features = () => {
+const Features = memo(() => {
   const features = [
     {
       icon: Wand2,
@@ -26,10 +26,10 @@ const Features = () => {
   ]
 
   return (
-    <section id="features" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <section id="features" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" aria-labelledby="features-heading">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 id="features-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Powerful Features
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
@@ -39,22 +39,27 @@ const Features = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="glass-effect rounded-2xl p-6 text-center hover:bg-white/20 transition-colors">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-xl mb-4">
+            <article 
+              key={index} 
+              className={`glass-effect rounded-2xl p-6 text-center hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-pointer fade-in stagger-${index + 1}`}
+            >
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-xl mb-4 group-hover:bg-white/30 transition-colors" aria-hidden="true">
                 <feature.icon className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">
                 {feature.title}
               </h3>
-              <p className="text-white/80">
+              <p className="text-white/80 leading-relaxed">
                 {feature.description}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   )
-}
+})
+
+Features.displayName = 'Features'
 
 export default Features

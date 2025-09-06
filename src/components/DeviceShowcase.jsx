@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-const DeviceShowcase = () => {
+const DeviceShowcase = memo(() => {
   return (
-    <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" aria-labelledby="showcase-heading">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 id="showcase-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Available Everywhere
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
@@ -15,8 +15,8 @@ const DeviceShowcase = () => {
 
         <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
           {/* Phone 1 */}
-          <div className="relative mx-auto">
-            <div className="w-64 h-80 bg-black rounded-[2rem] p-2">
+          <div className="relative mx-auto fade-in stagger-1">
+            <div className="w-64 h-80 bg-black rounded-[2rem] p-2 hover:scale-105 transition-transform duration-300">
               <div className="w-full h-full bg-gradient-to-br from-pink-400 to-purple-600 rounded-[1.5rem] overflow-hidden">
                 <div className="p-4 space-y-3">
                   <div className="flex items-center justify-between text-white text-sm">
@@ -42,8 +42,8 @@ const DeviceShowcase = () => {
           </div>
 
           {/* Phone 2 - Center */}
-          <div className="relative mx-auto">
-            <div className="w-64 h-80 bg-black rounded-[2rem] p-2">
+          <div className="relative mx-auto fade-in stagger-2">
+            <div className="w-64 h-80 bg-black rounded-[2rem] p-2 hover:scale-105 transition-transform duration-300">
               <div className="w-full h-full bg-gradient-to-br from-blue-400 to-cyan-500 rounded-[1.5rem] overflow-hidden">
                 <div className="p-4 space-y-3">
                   <div className="flex items-center justify-between text-white text-sm">
@@ -71,8 +71,8 @@ const DeviceShowcase = () => {
           </div>
 
           {/* Phone 3 */}
-          <div className="relative mx-auto">
-            <div className="w-64 h-80 bg-black rounded-[2rem] p-2">
+          <div className="relative mx-auto fade-in stagger-3">
+            <div className="w-64 h-80 bg-black rounded-[2rem] p-2 hover:scale-105 transition-transform duration-300">
               <div className="w-full h-full bg-gradient-to-br from-purple-500 to-indigo-600 rounded-[1.5rem] overflow-hidden">
                 <div className="p-4 space-y-3">
                   <div className="flex items-center justify-between text-white text-sm">
@@ -101,6 +101,8 @@ const DeviceShowcase = () => {
       </div>
     </section>
   )
-}
+})
+
+DeviceShowcase.displayName = 'DeviceShowcase'
 
 export default DeviceShowcase
