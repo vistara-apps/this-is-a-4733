@@ -18,7 +18,7 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl sm:text-2xl text-white/80 mb-8 max-w-2xl">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+              Discover your perfect style with AI-powered recommendations. Get personalized outfit suggestions, wardrobe analysis, and fashion insights tailored just for you.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
